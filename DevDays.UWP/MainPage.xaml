@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="DevDays.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DevDays.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel x:Name="mainLayout" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Viewbox Height="50">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton IsChecked="True" x:Name="RadioDemo" Content="Button Demo" GroupName="Group"></RadioButton>
+                    <RadioButton x:Name="RadioPosition" Content="Position Demo" GroupName="Group"></RadioButton>
+                    <RadioButton x:Name="RadioDDFiltering" Content="Filtering" GroupName="Group"></RadioButton>
+                    <RadioButton x:Name="RadioMovingBlock" Content="Moving Block" GroupName="Group"></RadioButton>
+                </StackPanel>
+            </Viewbox>
+        </StackPanel>
+        
+        <TextBlock x:Name="lblEvents" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+
+        <StackPanel Visibility="Collapsed" x:Name="spButtonDemo">
+            <Button Width="500" Height="100" FontSize="40" x:Name="btnClick" Content="Click Me 5 Times" HorizontalAlignment="Center"></Button>
+            <TextBlock TextWrapping="Wrap"   x:Name="lblClicked" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+
+        <ListView  Visibility="Collapsed" Width="400" Height="400" x:Name="lvData" HorizontalAlignment="Left">            
+        </ListView>
+
+        <StackPanel x:Name="DynamicDataFiltering">
+            <CheckBox x:Name="cbSortByName" Content="Sort By Name"></CheckBox>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="Filter"></TextBlock>
+                <TextBox Background="Pink" Width="200" x:Name="tbFilterText"></TextBox>
+            </StackPanel>
+            <StackPanel  HorizontalAlignment="Center">
+                <TextBlock Text="Average Rating"></TextBlock>
+                <TextBlock Width="200" x:Name="tbAverageRating"></TextBlock>
+            </StackPanel>
+            <ListView Width="400" Height="400" x:Name="lvFilteredAnimals" HorizontalAlignment="Left">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0 0 5 0" Text="Rate Me:"></TextBlock>
+                            <TextBox Margin="0 0 10 0" Text="{Binding AnimalRating, Mode=TwoWay}"/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
+        <Canvas Visibility="Collapsed" x:Name="spMovingBlock">
+            <StackPanel x:Name="spBLock"  Background="Red" Height="80" Width="80">
+                
+            </StackPanel>
+        </Canvas>
+    </StackPanel>
+</Page>
